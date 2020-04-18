@@ -18,7 +18,7 @@ export class InfoPaginaService {
   }
 
   private cargarInfo(){
-    console.log("Servicio de infoPagina Listo");
+    //console.log("Servicio de infoPagina Listo");
 
     // Leer archivo JSON
     this.http.get('assets/data/data-pagina.json')
@@ -26,7 +26,7 @@ export class InfoPaginaService {
 
         this.cargada = true;
         this.info = resp;
-        console.log(resp);
+       // console.log(resp);
 
       });
 
