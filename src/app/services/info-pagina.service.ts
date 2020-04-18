@@ -10,9 +10,14 @@ export class InfoPaginaService {
   info: InfoPagina = {};
   cargada = false;
 
+  equipo: any[] = [];
 
   constructor( private http: HttpClient) { 
+    this.cargarInfo();
+    this.cargarEquipo();
+  }
 
+  private cargarInfo(){
     console.log("Servicio de infoPagina Listo");
 
     // Leer archivo JSON
@@ -24,5 +29,19 @@ export class InfoPaginaService {
         console.log(resp);
 
       });
+
   }
+
+  // Carga el equipo que se cargo en la BD de FireBase
+  private cargarEquipo(){
+    
+    this.http.get('https://angular-html-danielam.firebaseio.com/equipo.json')
+      .subscribe( (resp: any[]) => {
+
+        this.equipo = resp;
+       // console.log(resp);
+
+      });
+  }
+
 }
